@@ -1,4 +1,7 @@
-
+import 'package:cat_breeds_app/core/http/core_http.dart';
+import 'package:cat_breeds_app/lib/features/cats/data/datasources/cat_remote_datasource.dart';
+import 'package:cat_breeds_app/lib/features/cats/data/repositories/cat_repository_impl.dart';
+import 'package:cat_breeds_app/lib/features/cats/domain/repositories/cat_repository.dart';
 import 'package:get_it/get_it.dart';
 
 /// Global service locator. Call [initDependencies] once in `main.dart`
@@ -10,15 +13,11 @@ Future<void> initDependencies() async {
   // sl.registerLazySingleton(() => DioClient.create());
 
   // Core
+  sl.registerLazySingleton(() => CoreHttp());
 
-
-  // Posts feature
-  // sl.registerLazySingleton<PostRemoteDataSource>(
-  //   () => PostRemoteDataSourceImpl(sl()),
-  // );
-  // sl.registerLazySingleton<PostRepository>(
-  //   () => PostRepositoryImpl(remoteDataSource: sl(), networkInfo: sl()),
-  // );
-  // sl.registerLazySingleton(() => GetPosts(sl()));
-  // sl.registerFactory(() => PostBloc(sl()));
+  // Cats feature
+  sl.registerLazySingleton<CatRemoteDataSource>(
+    () => CatRemoteDataSourceImpl(sl()),
+  );
+  sl.registerLazySingleton<CatRepository>(() => CatRepositoryImpl(sl()));
 }

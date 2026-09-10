@@ -11,6 +11,7 @@ abstract class Cat with _$Cat {
     required String origin,
     required String description,
     required String lifeSpan,
+    String? imageUrl,
   }) = _Cat;
 
   factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
