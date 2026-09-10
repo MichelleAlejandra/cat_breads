@@ -1,3 +1,4 @@
+import 'package:cat_breeds_app/lib/features/cats/presentation/cat_detail/pages/cat_detail_page.dart';
 import 'package:cat_breeds_app/lib/features/cats/presentation/cat_list/pages/cat_list_page.dart';
 import 'package:cat_breeds_app/lib/features/splash/presentation/splash_page.dart';
 import 'package:go_router/go_router.dart';
@@ -18,11 +19,14 @@ class AppRouter {
         path: CatListPage.routePath,
         name: CatListPage.routeName,
         builder: (context, state) => const CatListPage(),
+        routes: [
+          GoRoute(
+            path: CatDetailPage.routePath,
+            name: CatDetailPage.routeName,
+            builder: (context, state) => const CatDetailPage(),
+          ),
+        ],
       ),
-      // GoRoute(
-      //   path: AppRoutes.posts,
-      //   builder: (context, state) => const PostsPage(),
-      // ),
     ],
   );
 }

@@ -23,6 +23,11 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
+# Generated code (build_runner: freezed, json_serializable, etc.)
+*.freezed.dart
+*.g.dart
+*.gr.dart
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
