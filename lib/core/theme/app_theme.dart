@@ -8,6 +8,7 @@ class AppTheme {
   static ThemeData get light {
     final base = ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+      scaffoldBackgroundColor: AppColors.pageBackground,
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
@@ -36,6 +37,12 @@ class AppTheme {
         headlineLarge: textTheme.headlineLarge?.copyWith(
           fontSize: 36,
           fontWeight: FontWeight.w700,
+        ),
+        headlineSmall: textTheme.headlineSmall?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Colors.grey,
+          fontSize: 10,
+          letterSpacing: 0.5,
         ),
       ),
     );
