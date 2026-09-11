@@ -10,7 +10,7 @@ part 'cat_model.g.dart';
 /// `@JsonKey(name: ...)`. The image URL is nested under `image.url` in the
 /// raw response, so it uses a `@JsonKey(fromJson: ...)` converter instead,
 /// since `name:` only renames a flat top-level key.
-@freezed
+@Freezed(toJson: false)
 abstract class CatModel with _$CatModel {
   const CatModel._();
 
