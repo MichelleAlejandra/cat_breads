@@ -1,38 +1,31 @@
 import 'package:cat_breeds_app/lib/features/cats/domain/cat.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'cat_model.freezed.dart';
+part 'cat_model.g.dart';
 
 /// Maps a single breed object from TheCatAPI's `/breeds` response.
 ///
-/// Written by hand (no codegen) because the API's shape doesn't line up
-/// 1:1 with [Cat]: `name` -> `nameBreed`, `life_span` -> `lifeSpan`, and the
-/// image URL is nested under `image.url` rather than being a flat field.
-class CatModel {
-  const CatModel({
-    required this.id,
-    required this.nameBreed,
-    required this.origin,
-    required this.description,
-    required this.lifeSpan,
-    this.imageUrl,
-  });
+/// `name` -> `nameBreed` and `life_span` -> `lifeSpan` are handled via
+/// `@JsonKey(name: ...)`. The image URL is nested under `image.url` in the
+/// raw response, so it uses a `@JsonKey(fromJson: ...)` converter instead,
+/// since `name:` only renames a flat top-level key.
+@freezed
+abstract class CatModel with _$CatModel {
+  const CatModel._();
 
-  factory CatModel.fromJson(Map<String, dynamic> json) {
-    final image = json['image'];
-    return CatModel(
-      id: json['id'] as String,
-      nameBreed: json['name'] as String? ?? '',
-      origin: json['origin'] as String? ?? '',
-      description: json['description'] as String? ?? '',
-      lifeSpan: json['life_span'] as String? ?? '',
-      imageUrl: image is Map ? image['url'] as String? : null,
-    );
-  }
+  const factory CatModel({
+    required String id,
+    @JsonKey(name: 'name') @Default('') String nameBreed,
+    @Default('') String origin,
+    @Default('') String description,
+    @JsonKey(name: 'life_span') @Default('') String lifeSpan,
+    @JsonKey(name: 'image', fromJson: _imageUrlFromJson) String? imageUrl,
+    @Default('') String temperament,
+  }) = _CatModel;
 
-  final String id;
-  final String nameBreed;
-  final String origin;
-  final String description;
-  final String lifeSpan;
-  final String? imageUrl;
+  factory CatModel.fromJson(Map<String, dynamic> json) =>
+      _$CatModelFromJson(json);
 
   Cat toEntity() => Cat(
     id: id,
@@ -41,5 +34,9 @@ class CatModel {
     description: description,
     lifeSpan: lifeSpan,
     imageUrl: imageUrl,
+    temperament: temperament.split(',').map((s) => s.trim()).toList(),
   );
 }
+
+String? _imageUrlFromJson(dynamic image) =>
+    image is Map ? image['url'] as String? : null;

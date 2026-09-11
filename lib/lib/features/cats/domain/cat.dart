@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cat.freezed.dart';
-part 'cat.g.dart';
 
 @freezed
 abstract class Cat with _$Cat {
@@ -11,8 +10,7 @@ abstract class Cat with _$Cat {
     required String origin,
     required String description,
     required String lifeSpan,
+    required List<String> temperament,
     String? imageUrl,
   }) = _Cat;
-
-  factory Cat.fromJson(Map<String, dynamic> json) => _$CatFromJson(json);
 }
