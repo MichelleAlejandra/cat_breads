@@ -8,7 +8,7 @@ class _CatFlashInfoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MediaQuery.withClampedTextScaling(
-      maxScaleFactor: 1.2,
+      maxScaleFactor: 1.1,
       child: GridView(
         shrinkWrap: true,
         padding: EdgeInsets.zero,
