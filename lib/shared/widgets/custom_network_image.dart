@@ -17,6 +17,7 @@ class CustomNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dpr = MediaQuery.of(context).devicePixelRatio;
     return SizedBox(
       width: width,
       height: height,
@@ -25,6 +26,9 @@ class CustomNetworkImage extends StatelessWidget {
         width: width,
         height: height,
         fit: BoxFit.cover,
+        // Decode at display size (not full resolution) to cut memory usage.
+        cacheWidth: width != null ? (width! * dpr).round() : null,
+        cacheHeight: height != null ? (height! * dpr).round() : null,
         frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
           if (wasSynchronouslyLoaded) {
             return child;

@@ -13,45 +13,48 @@ class ContentStateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(28.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(15),
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: context.colorScheme.primaryContainer,
-              shape: BoxShape.circle,
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: 1.1,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 28),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(15),
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                color: context.colorScheme.primaryContainer,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.priority_high_rounded,
+                color: context.colorScheme.primary,
+                size: 50,
+              ),
             ),
-            child: Icon(
-              Icons.priority_high_rounded,
-              color: context.colorScheme.primary,
-              size: 50,
+            Text(
+              _title,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-          ),
-          Text(
-            _title,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10.0),
-          Text(
-            _description,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15),
-          ),
-          const SizedBox(height: 10.0),
-          if (onRetry != null)
-          FilledButton.icon(
-            onPressed: onRetry,
-            icon: const Icon(Icons.refresh_rounded),
-            label: Text('Retry' ),
-          ),
-          const SizedBox(height: 70.0),
-        ],
+            const SizedBox(height: 10.0),
+            Text(
+              _description,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15),
+            ),
+            const SizedBox(height: 10.0),
+            if (onRetry != null)
+              FilledButton.icon(
+                onPressed: onRetry,
+                icon: const Icon(Icons.refresh_rounded),
+                label: Text('Retry'),
+              ),
+            const SizedBox(height: 20.0),
+          ],
+        ),
       ),
     );
   }

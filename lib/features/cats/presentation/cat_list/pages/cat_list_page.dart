@@ -123,6 +123,7 @@ class _CatListScrollViewState extends State<_CatListScrollView> {
     return ListView.builder(
       key: const Key('cat-list'),
       controller: _scrollController,
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       itemCount: widget.cats.length + (widget.isLoadingMore ? 1 : 0),
       padding: EdgeInsets.symmetric(horizontal: widget.padding, vertical: 16),
       itemBuilder: (context, index) {

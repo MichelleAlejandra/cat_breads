@@ -53,7 +53,9 @@ class _SplashPageState extends State<SplashPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.splashBackground,
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.all(24),
+        alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -138,6 +140,7 @@ class _SplashTitle extends StatelessWidget {
         ),
         Text(
           'Discover, learn, and connect with each breed.',
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: AppColors.splashTitle,
             fontSize: 13,

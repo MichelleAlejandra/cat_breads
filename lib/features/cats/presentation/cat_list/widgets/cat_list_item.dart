@@ -164,12 +164,13 @@ class _Info extends StatelessWidget {
         Text(description, style: context.textTheme.headlineSmall),
         Row(
           spacing: 4.0,
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: aligment == CrossAxisAlignment.start
               ? MainAxisAlignment.start
               : MainAxisAlignment.end,
           children: [
             Icon(icon, size: 20, color: iconColor),
-            Text(value, style: context.textTheme.titleSmall),
+            Flexible(child: Text(value, style: context.textTheme.titleSmall)),
           ],
         ),
       ],

@@ -7,42 +7,45 @@ class _CatFlashInfoGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 2.2,
+    return MediaQuery.withClampedTextScaling(
+      maxScaleFactor: 1.2,
+      child: GridView(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          childAspectRatio: 2.0,
+        ),
+        children: [
+          _CardInfo(
+            description: 'LONGEVITY',
+            value: '${cat.lifeSpan} years',
+            color: AppColors.statLongevity,
+            icon: Icons.favorite_border_rounded,
+          ),
+          _CardInfo(
+            description: 'WEIGHT',
+            value: '${cat.weight} kg',
+            color: AppColors.statWeight,
+            icon: Icons.balance_outlined,
+          ),
+          _CardInfo(
+            description: 'HEIGHT',
+            value: '${cat.height} cm',
+            color: AppColors.statHeight,
+            icon: Icons.height_outlined,
+          ),
+          _CardInfo(
+            description: 'ORIGIN',
+            value: cat.origin,
+            color: AppColors.statOrigin,
+            icon: Icons.public_outlined,
+          ),
+        ],
       ),
-      children: [
-        _CardInfo(
-          description: 'LONGEVITY',
-          value: '${cat.lifeSpan} years',
-          color: AppColors.statLongevity,
-          icon: Icons.favorite_border_rounded,
-        ),
-        _CardInfo(
-          description: 'WEIGHT',
-          value: '${cat.weight} kg',
-          color: AppColors.statWeight,
-          icon: Icons.balance_outlined,
-        ),
-        _CardInfo(
-          description: 'HEIGHT',
-          value: '${cat.height} cm',
-          color: AppColors.statHeight,
-          icon: Icons.height_outlined,
-        ),
-        _CardInfo(
-          description: 'ORIGIN',
-          value: cat.origin,
-          color: AppColors.statOrigin,
-          icon: Icons.public_outlined,
-        ),
-      ],
     );
   }
 }
