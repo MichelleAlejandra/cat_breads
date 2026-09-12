@@ -4,6 +4,7 @@ import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat_image.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_detail/bloc/cat_detail_bloc.dart';
+import 'package:cat_breeds_app/shared/widgets/chip_wrap.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
@@ -87,13 +88,7 @@ class _CatInfo extends StatelessWidget {
                     title: 'TEMPERAMENT',
                     child: Container(
                       padding: const EdgeInsets.only(top: 8.0),
-                      child: Wrap(
-                        spacing: 8.0,
-                        runSpacing: 8.0,
-                        children: cat.temperament
-                            .map((e) => _Skill(value: e))
-                            .toList(),
-                      ),
+                      child: ChipWrap(values: cat.temperament),
                     ),
                   ),
                   SizedBox(height: 16.0),
@@ -108,36 +103,6 @@ class _CatInfo extends StatelessWidget {
     );
   }
 }
-
-class _Skill extends StatelessWidget {
-  const _Skill({required this.value});
-
-  final String value;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.08),
-        border: Border.all(
-          color: AppColors.primary.withValues(alpha: 0.3),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-      child: Text(
-        value,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: AppColors.primary,
-        ),
-      ),
-    );
-  }
-}
-
 
 class _Card extends StatelessWidget {
   const _Card({required this.child, this.padding});

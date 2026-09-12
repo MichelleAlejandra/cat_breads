@@ -84,29 +84,10 @@ class _CatListItem extends StatelessWidget {
           Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.symmetric(horizontal: padding),
-            child: Wrap(
-              spacing: 8.0,
-              runSpacing: 6.0,
-              crossAxisAlignment: WrapCrossAlignment.start,
-              children: cat.temperament
-                  .take(3)
-                  .map(
-                    (temp) => Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 3.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColors.cardBorder.withValues(alpha: 0.8),
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: Text(
-                        temp,
-                        style: TextStyle(color: Colors.black, fontSize: 12),
-                      ),
-                    ),
-                  )
-                  .toList(),
+            child: ChipWrap(
+              values: cat.temperament.take(3).toList(),
+              color: Colors.black87,
+              withBorder: false,
             ),
           ),
         ],

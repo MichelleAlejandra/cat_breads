@@ -5,6 +5,7 @@ import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_detail/pages/cat_detail_page.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_list/bloc/cat_list_bloc.dart';
+import 'package:cat_breeds_app/shared/widgets/chip_wrap.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
