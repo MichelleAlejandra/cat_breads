@@ -27,7 +27,6 @@ class CatListPage extends StatelessWidget {
     final double padding = 16.0;
     return Scaffold(
       appBar: CustomAppBar(title: 'CatBreeds'),
-      backgroundColor: AppColors.pageBackground,
       body: BlocProvider(
         create: (context) => sl<CatListBloc>()..add(CatListEvent.initialize()),
         child: Column(
@@ -48,8 +47,12 @@ class CatListPage extends StatelessWidget {
                       padding: padding,
                       isLoadingMore: state.isLoadingMore,
                     ),
-                    error: (_) =>
-                        const Center(child: Text('Error loading cats')),
+                    error: (_) => const Center(
+                      child: Text(
+                        'Error loading cats',
+                        key: Key('cat-list-error'),
+                      ),
+                    ),
                   );
                 },
               ),

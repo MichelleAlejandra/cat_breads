@@ -1,7 +1,7 @@
 part of '../pages/cat_detail_page.dart';
 
 class _CatInfoSkeleton extends StatelessWidget {
-  const _CatInfoSkeleton();
+  const _CatInfoSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {

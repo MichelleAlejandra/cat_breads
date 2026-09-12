@@ -1,28 +1,30 @@
 part of '../pages/cat_detail_page.dart';
 
 class _CatImageInformation extends StatelessWidget {
-  const _CatImageInformation({
-    required this.image,
-    required this.breedGroup,
-    required this.padding,
-  });
+  const _CatImageInformation({required this.image, required this.breedGroup});
 
   final CatImage? image;
   final String breedGroup;
-  final double padding;
 
   @override
   Widget build(BuildContext context) {
-    final double width = (MediaQuery.of(context).size.width - padding * 2);
-    final double? height = image?.heightForWidth(width);
-
     return Stack(
       children: [
         Container(
-          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.40,
+          ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
-            child: CustomNetworkImage(url: image?.url ?? '', height: height),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return CustomNetworkImage(
+                  url: image?.url ?? '',
+                  width: constraints.maxWidth,
+                  height: image?.heightForWidth(constraints.maxWidth),
+                );
+              },
+            ),
           ),
         ),
         Positioned(

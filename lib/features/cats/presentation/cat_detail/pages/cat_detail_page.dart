@@ -40,10 +40,15 @@ class CatDetailPage extends StatelessWidget {
             body: BlocBuilder<CatDetailBloc, CatDetailState>(
               builder: (context, state) {
                 return state.map(
-                  loading: (_) => _CatInfoSkeleton(),
+                  loading: (_) =>
+                      _CatInfoSkeleton(key: const Key('cat-info-skeleton')),
                   loaded: (state) =>
                       _CatInfo(key: const Key('cat-info'), cat: state.cat),
-                  error: (_) => Text('Error loading cat'),
+                  // TODO: Mejorar widget de error
+                  error: (_) => const Text(
+                    'Error loading cat',
+                    key: Key('cat-detail-error'),
+                  ),
                 );
               },
             ),
@@ -67,11 +72,7 @@ class _CatInfo extends StatelessWidget {
       padding: EdgeInsets.only(left: padding, right: padding, top: padding),
       child: Column(
         children: [
-          _CatImageInformation(
-            image: cat.image,
-            breedGroup: cat.breedGroup,
-            padding: padding,
-          ),
+          _CatImageInformation(image: cat.image, breedGroup: cat.breedGroup),
           const SizedBox(height: 16.0),
           Expanded(
             child: SingleChildScrollView(
@@ -104,4 +105,3 @@ class _CatInfo extends StatelessWidget {
     );
   }
 }
-

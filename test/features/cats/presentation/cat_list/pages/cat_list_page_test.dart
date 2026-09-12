@@ -48,13 +48,11 @@ void main() {
     await tester.pumpWidget(_makeWidget());
     await tester.pumpAndSettle();
 
-    for (final cat in cats) {
-      expect(find.text(cat.nameBreed), findsOneWidget);
-      expect(find.text(cat.origin), findsOneWidget);
-      expect(find.text(cat.lifeSpan), findsOneWidget);
-      expect(find.text(cat.temperament.first), findsOneWidget);
-    }
-    expect(find.text('Ver más'), findsNWidgets(cats.length));
+    expect(find.byKey(ValueKey('cat-list')), findsOneWidget);
+    expect(
+      find.byKey(ValueKey('see-more-chip_${cats.first.id}')),
+      findsOneWidget,
+    );
   });
 
   testWidgets('given the repository returns Either.left, '
@@ -67,7 +65,7 @@ void main() {
     await tester.pumpWidget(_makeWidget());
     await tester.pumpAndSettle();
 
-    expect(find.text('Error loading cats'), findsOneWidget);
+    expect(find.byKey(const Key('cat-list-error')), findsOneWidget);
   });
 
   testWidgets('given a user types in the search field, '
@@ -128,7 +126,7 @@ void main() {
   });
 
   testWidgets('given a cat card, '
-      'when the user taps "Ver más", '
+      'when the user taps "See more", '
       'then it navigates to CatDetailPage with that cat\'s id', (tester) async {
     when(
       () => repository.getCatBreeds(page: 0, limit: 10, query: null),

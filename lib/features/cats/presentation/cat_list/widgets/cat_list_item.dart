@@ -50,6 +50,9 @@ class _CatListItem extends StatelessWidget {
           SizedBox(height: 5),
           Container(
             width: double.infinity,
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.40,
+            ),
             margin: EdgeInsets.symmetric(horizontal: padding, vertical: 8.0),
             child: CustomNetworkImage(
               url: cat.image?.url ?? '',

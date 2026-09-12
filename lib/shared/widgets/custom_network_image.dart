@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cat_breeds_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -21,25 +20,30 @@ class CustomNetworkImage extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: CachedNetworkImage(
-        imageUrl: url,
+      child: Image.network(
+        url,
         width: width,
         height: height,
         fit: BoxFit.cover,
-        httpHeaders: const {'Connection': 'keep-alive'},
-        fadeInDuration: Duration.zero,
-        fadeOutDuration: Duration.zero,
-        progressIndicatorBuilder: (context, url, downloadProgress) =>
-            _ResizableContainer(
-              child: (w, h) => Container(
-                width: w,
-                height: h,
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(),
-              ),
-              ratio: 1,
-            ),
-        errorWidget: (_, _, _) => _errorWidget(),
+        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+          if (wasSynchronouslyLoaded) {
+            return child;
+          }
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            child: frame != null
+                ? child
+                : _ResizableContainer(
+                    child: (w, h) => SizedBox(
+                      width: w,
+                      height: h,
+                      child: const Center(child: CircularProgressIndicator()),
+                    ),
+                    ratio: 1,
+                  ),
+          );
+        },
+        errorBuilder: (context, url, error) => _errorWidget(),
       ),
     );
   }
