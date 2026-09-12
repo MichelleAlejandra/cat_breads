@@ -118,6 +118,7 @@ class _SplashTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: const Key('splash-title'),
       spacing: 8.0,
       children: [
         Text.rich(
