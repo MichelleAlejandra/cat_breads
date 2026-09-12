@@ -63,7 +63,7 @@ class _CatListItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: _Info(
-                    description: 'PAÍS DE ORIGEN',
+                    description: 'COUNTRY OF ORIGIN',
                     value: cat.origin,
                     icon: Icons.public,
                     iconColor: Colors.green,
@@ -71,7 +71,7 @@ class _CatListItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 8.0),
                 _Info(
-                  description: 'ESPERANZA DE VIDA',
+                  description: 'LIFE EXPECTANCY',
                   value: cat.lifeSpan,
                   icon: Icons.favorite,
                   iconColor: Colors.red,
@@ -117,7 +117,7 @@ class _SeeMoreChip extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              'Ver más',
+              'See more',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.primary,

@@ -19,9 +19,7 @@ class _CatImageInformation extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          constraints: BoxConstraints.expand(
-            height: MediaQuery.of(context).size.height * 0.40,
-          ),
+          constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.40),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
             child: CustomNetworkImage(url: image?.url ?? '', height: height),

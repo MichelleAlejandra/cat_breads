@@ -68,7 +68,7 @@ class _SearchTexfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Buscar raza de gato...',
+        hintText: 'Search for a cat breed...',
         suffixIcon: Icon(Icons.search),
       ),
       onChanged: (value) {
