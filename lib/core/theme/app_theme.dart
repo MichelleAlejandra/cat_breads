@@ -28,6 +28,21 @@ class AppTheme {
           borderSide: const BorderSide(color: AppColors.primary),
         ),
       ),
+      filledButtonTheme: FilledButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          textStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          iconSize: 24,
+        ),
+      ),
     );
 
     final textTheme = GoogleFonts.plusJakartaSansTextTheme(base.textTheme);

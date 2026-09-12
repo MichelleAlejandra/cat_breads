@@ -8,6 +8,7 @@ import 'package:cat_breeds_app/shared/widgets/app_card.dart';
 import 'package:cat_breeds_app/shared/widgets/chip_wrap.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
+import 'package:cat_breeds_app/shared/widgets/content_state_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -44,10 +45,11 @@ class CatDetailPage extends StatelessWidget {
                       _CatInfoSkeleton(key: const Key('cat-info-skeleton')),
                   loaded: (state) =>
                       _CatInfo(key: const Key('cat-info'), cat: state.cat),
-                  // TODO: Mejorar widget de error
-                  error: (_) => const Text(
-                    'Error loading cat',
-                    key: Key('cat-detail-error'),
+                  error: (_) => ContentStateView(
+                    key: const Key('cat-detail-error'),
+                    onRetry: () => context.read<CatDetailBloc>().add(
+                      CatDetailEvent.initialize(id: id),
+                    ),
                   ),
                 );
               },

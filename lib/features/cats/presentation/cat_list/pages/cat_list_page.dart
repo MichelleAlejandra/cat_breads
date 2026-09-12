@@ -1,4 +1,3 @@
-
 import 'package:cat_breeds_app/core/di/injection_container.dart';
 import 'package:cat_breeds_app/core/theme/app_colors.dart';
 import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
@@ -8,6 +7,7 @@ import 'package:cat_breeds_app/features/cats/presentation/cat_list/bloc/cat_list
 import 'package:cat_breeds_app/shared/widgets/chip_wrap.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
+import 'package:cat_breeds_app/shared/widgets/content_state_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -42,15 +42,20 @@ class CatListPage extends StatelessWidget {
                   return state.map(
                     loading: (_) =>
                         const Center(child: CircularProgressIndicator()),
-                    loaded: (state) => _CatListScrollView(
-                      cats: state.cats,
-                      padding: padding,
-                      isLoadingMore: state.isLoadingMore,
-                    ),
-                    error: (_) => const Center(
-                      child: Text(
-                        'Error loading cats',
-                        key: Key('cat-list-error'),
+                    loaded: (state) => state.cats.isNotEmpty
+                        ? _CatListScrollView(
+                            cats: state.cats,
+                            padding: padding,
+                            isLoadingMore: state.isLoadingMore,
+                          )
+                        : ContentStateView(
+                            key: const Key('cat-list-empty'),
+                            contentState: ContentState.empty,
+                          ),
+                    error: (_) => ContentStateView(
+                      key: const Key('cat-list-error'),
+                      onRetry: () => context.read<CatListBloc>().add(
+                        CatListEvent.initialize(),
                       ),
                     ),
                   );
