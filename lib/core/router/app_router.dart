@@ -1,6 +1,6 @@
 import 'package:cat_breeds_app/features/cats/presentation/cat_detail/pages/cat_detail_page.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_list/pages/cat_list_page.dart';
-import 'package:cat_breeds_app/features/splash/presentation/splash_page.dart';
+import 'package:cat_breeds_app/features/splash/presentation/pages/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
 /// Central navigation graph. Add new routes here as features grow.
