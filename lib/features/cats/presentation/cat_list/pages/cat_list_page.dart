@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:cat_breeds_app/core/di/injection_container.dart';
 import 'package:cat_breeds_app/core/theme/app_colors.dart';
 import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
@@ -6,12 +6,14 @@ import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_detail/pages/cat_detail_page.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_list/bloc/cat_list_bloc.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
+import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 part '../widgets/cat_list_item.dart';
+part '../widgets/cat_list_item_skeleton.dart';
 
 class CatListPage extends StatelessWidget {
   const CatListPage({super.key});
@@ -110,6 +112,7 @@ class _CatListScrollViewState extends State<_CatListScrollView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: const Key('cat-list'),
       controller: _scrollController,
       itemCount: widget.cats.length + (widget.isLoadingMore ? 1 : 0),
       padding: EdgeInsets.symmetric(horizontal: widget.padding, vertical: 16),

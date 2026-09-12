@@ -80,7 +80,7 @@ class _CatInfo extends StatelessWidget {
 }
 
 class _CatInfoSkeleton extends StatelessWidget {
-  const _CatInfoSkeleton({super.key});
+  const _CatInfoSkeleton();
 
   @override
   Widget build(BuildContext context) {

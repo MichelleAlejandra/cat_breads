@@ -10,17 +10,11 @@ class CustomNetworkImage extends StatelessWidget {
     required this.url,
     this.width,
     this.height,
-    this.color,
-    this.fit,
-    this.colorBlendMode,
   });
 
   final String url;
   final double? width;
   final double? height;
-  final Color? color;
-  final BoxFit? fit;
-  final BlendMode? colorBlendMode;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +25,15 @@ class CustomNetworkImage extends StatelessWidget {
         imageUrl: url,
         width: width,
         height: height,
-        fit: fit,
-        color: color,
-        colorBlendMode: colorBlendMode,
         httpHeaders: const {'Connection': 'keep-alive'},
+        fadeInDuration: Duration.zero,
+        fadeOutDuration: Duration.zero,
         progressIndicatorBuilder: (context, url, downloadProgress) =>
             _ResizableContainer(
-              child: (w, h) => SizedBox(
+              child: (w, h) => Container(
                 width: w,
                 height: h,
+                alignment: Alignment.center,
                 child: CircularProgressIndicator(),
               ),
               ratio: 0.45,
@@ -51,12 +45,20 @@ class CustomNetworkImage extends StatelessWidget {
 
   _ResizableContainer _errorWidget() {
     return _ResizableContainer(
-      child: (w, h) => Icon(
-        Icons.image_not_supported_rounded,
-        size: w,
-        color: AppColors.cardBorder,
+      child: (w, h) => Container(
+        width: w,
+        height: h,
+        decoration: BoxDecoration(
+          color: AppColors.cardBorder.withValues(alpha: 0.3),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Icon(
+          Icons.image_not_supported_rounded,
+          size: w / 4,
+          color: AppColors.cardBorder,
+        ),
       ),
-      ratio: 0.33,
+      ratio: 1,
     );
   }
 }
@@ -73,7 +75,9 @@ class _ResizableContainer extends StatelessWidget {
       builder: (context, constraints) {
         final size = constraints.biggest;
         final width = size.width.isFinite ? size.width * ratio : ratio * 1.5;
-        final height = size.height.isFinite ? size.height * ratio : ratio * 1.5;
+        final height = size.height.isFinite
+            ? size.height * ratio
+            : width * ratio;
         return Center(child: child(width, height));
       },
     );

@@ -40,7 +40,7 @@ class _CatListItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                _SeeMoreChip(id: cat.id),
+                _SeeMoreChip(key: Key('see-more-chip_${cat.id}'), id: cat.id),
               ],
             ),
           ),
@@ -48,7 +48,7 @@ class _CatListItem extends StatelessWidget {
           Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: padding, vertical: 8.0),
-            child: _CatImage(imgUrl: cat.imageUrl),
+            child: CustomNetworkImage(url: cat.imageUrl ?? ''),
           ),
           Divider(color: AppColors.cardBorder, height: 25.0),
           Padding(
@@ -109,27 +109,8 @@ class _CatListItem extends StatelessWidget {
   }
 }
 
-class _CatListItemSkeleton extends StatelessWidget {
-  const _CatListItemSkeleton();
-
-  @override
-  Widget build(BuildContext context) {
-    final Cat cat = Cat(
-      id: '',
-      nameBreed: 'Skeleton breed',
-      origin: 'Skeleton origin',
-      description: '',
-      lifeSpan: '20-30',
-      imageUrl: '',
-      temperament: ['Smart', 'Skeleton temperament 2', 'Intelligent'],
-      history: '',
-    );
-    return Skeletonizer(child: _CatListItem(cat: cat));
-  }
-}
-
 class _SeeMoreChip extends StatelessWidget {
-  const _SeeMoreChip({required this.id});
+  const _SeeMoreChip({super.key, required this.id});
 
   final String id;
 
@@ -165,53 +146,6 @@ class _SeeMoreChip extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _CatImage extends StatelessWidget {
-  const _CatImage({required this.imgUrl});
-
-  final String? imgUrl;
-
-  static const double _height = 150;
-
-  @override
-  Widget build(BuildContext context) {
-    return imgUrl != null
-        ? CachedNetworkImage(
-            imageUrl: imgUrl!,
-            placeholder: (context, url) =>
-                _getPlaceholder(CircularProgressIndicator()),
-            errorWidget: (context, url, error) => _getPlaceholder(
-              Icon(
-                Icons.image_not_supported_rounded,
-                size: 100,
-                color: AppColors.cardBorder,
-              ),
-            ),
-          )
-        : _getPlaceholder(
-            Icon(
-              Icons.image_not_supported_rounded,
-              size: 100,
-              color: AppColors.cardBorder,
-            ),
-          );
-  }
-
-  Container _getPlaceholder(Widget child) {
-    return Container(
-      height: _height,
-      decoration: BoxDecoration(
-        color: AppColors.cardBorder.withValues(alpha: 0.3),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: const Icon(
-        Icons.image_not_supported_rounded,
-        size: 100,
-        color: AppColors.cardBorder,
       ),
     );
   }
