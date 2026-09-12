@@ -9,11 +9,12 @@ class _CatInfoSkeleton extends StatelessWidget {
       id: '',
       nameBreed: 'Skeleton breed',
       origin: 'Skeleton origin',
-      description: '',
+      description: 'Loreipsum, Loreipsum, Loreipsum, Loreipsum, Loreipsum, Loreipsum',
       lifeSpan: '20-30',
       temperament: ['Smart', 'Skeleton temperament 2', 'Intelligent'],
       history: 'Loreipsum ',
-      breedGroup: '',
+      breedGroup: 'short hair',
+      weight: '12-13'
     );
     return Skeletonizer(child: _CatInfo(cat: cat));
   }

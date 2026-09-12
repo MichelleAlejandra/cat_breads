@@ -25,6 +25,7 @@ class CustomNetworkImage extends StatelessWidget {
         imageUrl: url,
         width: width,
         height: height,
+        fit: BoxFit.cover,
         httpHeaders: const {'Connection': 'keep-alive'},
         fadeInDuration: Duration.zero,
         fadeOutDuration: Duration.zero,
