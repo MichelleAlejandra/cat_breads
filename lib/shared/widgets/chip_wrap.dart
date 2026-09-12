@@ -1,4 +1,5 @@
 import 'package:cat_breeds_app/core/theme/app_colors.dart';
+import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
 import 'package:flutter/material.dart';
 
 class ChipWrap extends StatelessWidget {
@@ -52,11 +53,7 @@ class _Chip extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Text(
         value,
-        style: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-          color: color,
-        ),
+        style: context.textTheme.labelSmall?.copyWith(color: color),
       ),
     );
   }

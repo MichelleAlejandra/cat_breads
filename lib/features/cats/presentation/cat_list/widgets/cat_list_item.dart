@@ -15,7 +15,7 @@ class _CatListItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.surface,
         border: Border.all(color: AppColors.cardBorder, width: 1),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
@@ -39,7 +39,7 @@ class _CatListItem extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       fontSize: 20,
-                      color: Colors.black,
+                      color: AppColors.textPrimary,
                     ),
                   ),
                 ),
@@ -69,7 +69,7 @@ class _CatListItem extends StatelessWidget {
                     description: 'COUNTRY OF ORIGIN',
                     value: cat.origin,
                     icon: Icons.public,
-                    iconColor: Colors.green,
+                    iconColor: AppColors.statOrigin,
                   ),
                 ),
                 const SizedBox(width: 8.0),
@@ -77,7 +77,7 @@ class _CatListItem extends StatelessWidget {
                   description: 'LIFE EXPECTANCY',
                   value: cat.lifeSpan,
                   icon: Icons.favorite,
-                  iconColor: Colors.red,
+                  iconColor: AppColors.statLongevity,
                   aligment: CrossAxisAlignment.end,
                 ),
               ],
@@ -89,7 +89,7 @@ class _CatListItem extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: padding),
             child: ChipWrap(
               values: cat.temperament.take(3).toList(),
-              color: Colors.black87,
+              color: AppColors.textSecondary,
               withBorder: false,
             ),
           ),
@@ -169,15 +169,7 @@ class _Info extends StatelessWidget {
               : MainAxisAlignment.end,
           children: [
             Icon(icon, size: 20, color: iconColor),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                height: 1.0,
-              ),
-            ),
+            Text(value, style: context.textTheme.titleSmall),
           ],
         ),
       ],

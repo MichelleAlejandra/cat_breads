@@ -21,25 +21,25 @@ class _CatFlashInfoGrid extends StatelessWidget {
         _CardInfo(
           description: 'LONGEVITY',
           value: '${cat.lifeSpan} years',
-          color: Colors.red,
+          color: AppColors.statLongevity,
           icon: Icons.favorite_border_rounded,
         ),
         _CardInfo(
           description: 'WEIGHT',
           value: '${cat.weight} kg',
-          color: Colors.orange,
+          color: AppColors.statWeight,
           icon: Icons.balance_outlined,
         ),
         _CardInfo(
           description: 'HEIGHT',
           value: '${cat.height} cm',
-          color: Colors.blue,
+          color: AppColors.statHeight,
           icon: Icons.height_outlined,
         ),
         _CardInfo(
           description: 'ORIGIN',
           value: cat.origin,
-          color: Colors.green,
+          color: AppColors.statOrigin,
           icon: Icons.public_outlined,
         ),
       ],
@@ -81,16 +81,7 @@ class _CardInfo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(description, style: context.textTheme.headlineSmall),
-                Text(
-                  value,
-                  maxLines: 2,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    height: 1.0,
-                  ),
-                ),
+                Text(value, maxLines: 2, style: context.textTheme.titleSmall),
               ],
             ),
           ),

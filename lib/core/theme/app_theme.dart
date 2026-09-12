@@ -6,9 +6,23 @@ class AppTheme {
   const AppTheme._();
 
   static ThemeData get light {
-    final base = ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
+    final ColorScheme colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+    );
+    final TextTheme textTheme = GoogleFonts.plusJakartaSansTextTheme(
+      ThemeData(colorScheme: colorScheme).textTheme,
+    );
+
+    final ThemeData base = ThemeData(
+      colorScheme: colorScheme,
       scaffoldBackgroundColor: AppColors.pageBackground,
+      appBarTheme: AppBarTheme(
+        titleTextStyle: textTheme.titleLarge?.copyWith(
+          color: AppColors.textPrimary,
+          fontWeight: FontWeight.w900,
+          fontSize: 22,
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
@@ -36,16 +50,11 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          textStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+          textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
           iconSize: 24,
         ),
       ),
     );
-
-    final textTheme = GoogleFonts.plusJakartaSansTextTheme(base.textTheme);
 
     return base.copyWith(
       textTheme: textTheme.copyWith(
@@ -58,6 +67,16 @@ class AppTheme {
           color: Colors.grey,
           fontSize: 10,
           letterSpacing: 0.5,
+        ),
+        titleSmall: textTheme.titleSmall?.copyWith(
+          fontSize: 15,
+          fontWeight: FontWeight.bold,
+          color: AppColors.textPrimary,
+          height: 1.0,
+        ),
+        labelSmall: textTheme.labelSmall?.copyWith(
+          fontSize: 12,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

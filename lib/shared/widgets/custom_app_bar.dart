@@ -14,11 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget text = Text(
-      title,
-      style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900),
-      textAlign: TextAlign.center,
-    );
+    final Widget text = Text(title, textAlign: TextAlign.center);
     return AppBar(
       elevation: 5,
       scrolledUnderElevation: 0,

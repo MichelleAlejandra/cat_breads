@@ -5,12 +5,14 @@ import 'package:cat_breeds_app/features/cats/data/models/cat_model.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 
 abstract class CatRemoteDataSource {
+  /// Returns a list of [Cat]s given [page], [limit] and [query]
   Future<HttpResult<List<Cat>>> getCatBreeds({
     required int page,
     required int limit,
     String? query,
   });
 
+  /// Returns a [Cat] with the given [id]
   Future<HttpResult<Cat>> getCatById({required String id});
 }
 
