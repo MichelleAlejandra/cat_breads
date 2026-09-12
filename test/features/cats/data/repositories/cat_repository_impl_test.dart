@@ -18,6 +18,7 @@ void main() {
     lifeSpan: '14 - 15',
     temperament: const ['Active'],
     history: 'history',
+    breedGroup: '',
   );
 
   group('getCatBreeds', () {

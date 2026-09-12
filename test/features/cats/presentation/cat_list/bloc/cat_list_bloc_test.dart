@@ -18,6 +18,7 @@ void main() {
     lifeSpan: '10 - 15',
     temperament: const ['Active'],
     history: 'history',
+    breedGroup: '',
   );
 
   final cats = [buildCat('1'), buildCat('2')];

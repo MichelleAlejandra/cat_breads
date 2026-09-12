@@ -1,7 +1,7 @@
-part of '../pages/cat_list_page.dart';
+part of '../pages/cat_detail_page.dart';
 
-class _CatListItemSkeleton extends StatelessWidget {
-  const _CatListItemSkeleton();
+class _CatInfoSkeleton extends StatelessWidget {
+  const _CatInfoSkeleton();
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +12,9 @@ class _CatListItemSkeleton extends StatelessWidget {
       description: '',
       lifeSpan: '20-30',
       temperament: ['Smart', 'Skeleton temperament 2', 'Intelligent'],
-      history: '',
+      history: 'Loreipsum ',
       breedGroup: '',
     );
-    return Skeletonizer(
-      key: const Key('cat-skeleton'),
-      child: _CatListItem(cat: cat),
-    );
+    return Skeletonizer(child: _CatInfo(cat: cat));
   }
 }

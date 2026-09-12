@@ -22,6 +22,7 @@ void main() {
     lifeSpan: '${id}0 - ${id}5',
     temperament: ['Active $id', 'Curious $id'],
     history: 'history',
+    breedGroup: '',
   );
 
   final cats = [buildCat('1'), buildCat('2')];

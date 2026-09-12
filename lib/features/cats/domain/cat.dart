@@ -13,6 +13,7 @@ abstract class Cat with _$Cat {
     required String lifeSpan,
     required List<String> temperament,
     required String history,
+    required String breedGroup,
     CatImage? image,
     @Default('') String weight,
     @Default('') String height,

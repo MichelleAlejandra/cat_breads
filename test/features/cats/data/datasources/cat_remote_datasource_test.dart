@@ -57,6 +57,7 @@ void main() {
           lifeSpan: '14 - 15',
           temperament: const ['Active', 'Energetic'],
           history: 'history',
+          breedGroup: '',
         ),
       ]);
     });
@@ -120,6 +121,7 @@ void main() {
               lifeSpan: '14 - 15',
               temperament: const ['Active'],
               history: 'history',
+              breedGroup: '',
             ),
           ),
         );
@@ -158,6 +160,7 @@ void main() {
             lifeSpan: '14 - 15',
             temperament: const ['Active'],
             history: 'history',
+            breedGroup: '',
           ),
         );
       },
@@ -192,4 +195,5 @@ final Cat _cat = Cat(
   lifeSpan: '14 - 15',
   temperament: const ['Active'],
   history: 'history',
+  breedGroup: '',
 );

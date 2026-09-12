@@ -17,6 +17,8 @@ abstract class CatModel with _$CatModel {
     @JsonKey(name: 'life_span') @Default('') String lifeSpan,
     @Default('') String temperament,
     @Default('') String history,
+    @JsonKey(name: 'breed_group')
+    @Default('') String breedGroup,
     CatImageModel? image,
     @JsonKey(fromJson: _measureMetricFromJson) @Default('') String weight,
     @JsonKey(fromJson: _measureMetricFromJson) @Default('') String height,
@@ -33,6 +35,7 @@ abstract class CatModel with _$CatModel {
     lifeSpan: lifeSpan,
     temperament: temperament.split(',').map((s) => s.trim()).toList(),
     history: history,
+    breedGroup: breedGroup,
     image: image?.toEntity(),
     weight: weight,
     height: height,
