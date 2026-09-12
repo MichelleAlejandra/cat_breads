@@ -61,7 +61,7 @@ class _CardInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Card(
+    return AppCard(
       padding: const EdgeInsets.all(16.0),
       child: Row(
         spacing: 10.0,

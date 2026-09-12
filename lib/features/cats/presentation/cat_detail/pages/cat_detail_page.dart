@@ -4,6 +4,7 @@ import 'package:cat_breeds_app/core/theme/build_context_theme_ext.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat_image.dart';
 import 'package:cat_breeds_app/features/cats/presentation/cat_detail/bloc/cat_detail_bloc.dart';
+import 'package:cat_breeds_app/shared/widgets/app_card.dart';
 import 'package:cat_breeds_app/shared/widgets/chip_wrap.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_app_bar.dart';
 import 'package:cat_breeds_app/shared/widgets/custom_network_image.dart';
@@ -104,23 +105,3 @@ class _CatInfo extends StatelessWidget {
   }
 }
 
-class _Card extends StatelessWidget {
-  const _Card({required this.child, this.padding});
-
-  final Widget child;
-  final EdgeInsetsGeometry? padding;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: padding,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: AppColors.cardBorder, width: 1),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: child,
-    );
-  }
-}

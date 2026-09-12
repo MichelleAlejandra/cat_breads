@@ -9,7 +9,7 @@ class _ExtendedInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _Card(
+    return AppCard(
       padding: const EdgeInsets.only(
         left: 16.0,
         top: 10.0,
