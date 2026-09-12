@@ -8,6 +8,9 @@ class _CatListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double padding = 16.0;
+    final double width = (MediaQuery.of(context).size.width - padding * 2);
+    final double? height = cat.image?.heightForWidth(width);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -48,7 +51,10 @@ class _CatListItem extends StatelessWidget {
           Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: padding, vertical: 8.0),
-            child: CustomNetworkImage(url: cat.imageUrl ?? ''),
+            child: CustomNetworkImage(
+              url: cat.image?.url ?? '',
+              height: height,
+            ),
           ),
           Divider(color: AppColors.cardBorder, height: 25.0),
           Padding(

@@ -11,7 +11,6 @@ class _CatListItemSkeleton extends StatelessWidget {
       origin: 'Skeleton origin',
       description: '',
       lifeSpan: '20-30',
-      imageUrl: '',
       temperament: ['Smart', 'Skeleton temperament 2', 'Intelligent'],
       history: '',
     );

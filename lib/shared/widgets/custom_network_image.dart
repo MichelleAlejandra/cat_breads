@@ -36,7 +36,7 @@ class CustomNetworkImage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(),
               ),
-              ratio: 0.45,
+              ratio: 1,
             ),
         errorWidget: (_, _, _) => _errorWidget(),
       ),

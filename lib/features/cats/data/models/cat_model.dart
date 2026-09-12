@@ -1,15 +1,10 @@
+import 'package:cat_breeds_app/features/cats/data/models/cat_image_model.dart';
 import 'package:cat_breeds_app/features/cats/domain/cat.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cat_model.freezed.dart';
 part 'cat_model.g.dart';
 
-/// Maps a single breed object from TheCatAPI's `/breeds` response.
-///
-/// `name` -> `nameBreed` and `life_span` -> `lifeSpan` are handled via
-/// `@JsonKey(name: ...)`. The image URL is nested under `image.url` in the
-/// raw response, so it uses a `@JsonKey(fromJson: ...)` converter instead,
-/// since `name:` only renames a flat top-level key.
 @Freezed(toJson: false)
 abstract class CatModel with _$CatModel {
   const CatModel._();
@@ -20,9 +15,11 @@ abstract class CatModel with _$CatModel {
     @Default('') String origin,
     @Default('') String description,
     @JsonKey(name: 'life_span') @Default('') String lifeSpan,
-    @JsonKey(name: 'image', fromJson: _imageUrlFromJson) String? imageUrl,
     @Default('') String temperament,
     @Default('') String history,
+    CatImageModel? image,
+    @JsonKey(fromJson: _measureMetricFromJson) @Default('') String weight,
+    @JsonKey(fromJson: _measureMetricFromJson) @Default('') String height,
   }) = _CatModel;
 
   factory CatModel.fromJson(Map<String, dynamic> json) =>
@@ -34,11 +31,13 @@ abstract class CatModel with _$CatModel {
     origin: origin,
     description: description,
     lifeSpan: lifeSpan,
-    imageUrl: imageUrl,
     temperament: temperament.split(',').map((s) => s.trim()).toList(),
     history: history,
+    image: image?.toEntity(),
+    weight: weight,
+    height: height,
   );
 }
 
-String? _imageUrlFromJson(dynamic image) =>
-    image is Map ? image['url'] as String? : null;
+String _measureMetricFromJson(dynamic measure) =>
+    measure is Map ? (measure['metric'] as String?) ?? '' : '';

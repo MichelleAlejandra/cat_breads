@@ -59,7 +59,11 @@ class _CatInfo extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
-            child: CustomNetworkImage(url: cat.imageUrl ?? ''),
+            child: CustomNetworkImage(
+              url: cat.image?.url ?? '',
+              width: cat.image?.width,
+              height: cat.image?.height,
+            ),
           ),
           SizedBox(height: 16.0),
           Text(
@@ -90,7 +94,6 @@ class _CatInfoSkeleton extends StatelessWidget {
       origin: 'Skeleton origin',
       description: '',
       lifeSpan: '20-30',
-      imageUrl: '',
       temperament: ['Smart', 'Skeleton temperament 2', 'Intelligent'],
       history: 'Loreipsum ',
     );

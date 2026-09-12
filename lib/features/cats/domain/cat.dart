@@ -1,3 +1,4 @@
+import 'package:cat_breeds_app/features/cats/domain/cat_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cat.freezed.dart';
@@ -12,6 +13,8 @@ abstract class Cat with _$Cat {
     required String lifeSpan,
     required List<String> temperament,
     required String history,
-    String? imageUrl,
+    CatImage? image,
+    @Default('') String weight,
+    @Default('') String height,
   }) = _Cat;
 }
